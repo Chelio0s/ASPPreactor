@@ -1,0 +1,68 @@
+﻿
+@using System.Security.Cryptography.X509Certificates
+@using PreactorASPCore.Models.OracleData.Entity
+@using System.Linq;
+@using System;
+@model List<PreactorASPCore.Models.OracleData.Entity.RI_BIND_OB_V>
+
+<link rel="stylesheet" href="/css/EquipmentStyle.css" />
+
+@{
+    ViewBag.Title = "Карта оборудования цеха #2";
+}
+
+<div class="title">@ViewBag.Title</div>
+
+@foreach (int j in ViewBag.KonveNum)
+{
+
+    <div class="conveer">
+        @for (int i = 85; i > 0; i--)
+        {
+
+            if (i % 2 == 1)
+            {
+                var equip = @Model.FirstOrDefault(x => x.KPLOT == "20" + j && x.WP == i);
+                string c = "white";
+                var color = equip?.KOB % 20 ?? 20;
+                c = @ViewBag.Colors[color];
+
+
+
+                <div class="equipmentplace" style="background: @c" data-name="@equip?.NOB">
+                    <div class="kob" title="sdsdsdsd">@Html.Raw(equip?.KOB)</div>
+                    <div class="mob">@Html.Raw(equip?.MOB)</div>
+                    <div class="place">@Html.Raw(i)</div>
+                </div>
+
+            }
+        }
+    </div>
+
+    <div class="lenta">КОНВЕЙЕР № @j</div>
+    <div class="conveer">
+        @for (int i = 85; i > 1; i--)
+        {
+
+            if (i % 2 == 0)
+            {
+                var equip = @Model.FirstOrDefault(x => x.KPLOT == "20" + j && x.WP == i);
+                string c = "white";
+                var color = equip?.KOB % 20 ?? 20;
+                c = @ViewBag.Colors[color];
+
+                <div class="equipmentplaceBot" style="background: @c" data-name="@equip?.NOB">
+                    <div class="place">@Html.Raw(i)</div>
+                    <div class="kob">@Html.Raw(equip?.KOB)</div>
+                    <div class="mob">@Html.Raw(equip?.MOB)</div>
+                </div>
+            }
+        }
+    </div>
+
+}
+
+
+
+
+
