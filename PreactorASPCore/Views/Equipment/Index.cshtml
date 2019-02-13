@@ -1,8 +1,5 @@
-﻿
-@using System.Security.Cryptography.X509Certificates
-@using PreactorASPCore.Models.OracleData.Entity
-@using System.Linq;
-@using System;
+﻿@using System.Linq;
+
 @model List<PreactorASPCore.Models.OracleData.Entity.RI_BIND_OB_V>
 
 <link rel="stylesheet" href="/css/EquipmentStyle.css" />
@@ -28,13 +25,22 @@
                 c = @ViewBag.Colors[color];
 
 
-
-                <div class="equipmentplace" style="background: @c" data-name="@equip?.NOB">
-                    <div class="kob" title="sdsdsdsd">@Html.Raw(equip?.KOB)</div>
-                    <div class="mob">@Html.Raw(equip?.MOB)</div>
-                    <div class="place">@Html.Raw(i)</div>
-                </div>
-
+                if (equip!=null)
+                {
+                    <div class="equipmentplace" style="background: @c" data-tooltip="@equip?.NOB">
+                        <div class="kob">@Html.Raw(equip?.KOB)</div>
+                        <div class="mob">@Html.Raw(equip?.MOB)</div>
+                        <div class="place">@Html.Raw(i)</div>
+                    </div>
+                }
+                if (equip==null)
+                {
+                    <div class="equipmentplace" style="background: @c">
+                        <div class="kob"></div>
+                        <div class="mob"></div>
+                        <div class="place">@Html.Raw(i)</div>
+                    </div> 
+                }
             }
         }
     </div>
@@ -51,11 +57,23 @@
                 var color = equip?.KOB % 20 ?? 20;
                 c = @ViewBag.Colors[color];
 
-                <div class="equipmentplaceBot" style="background: @c" data-name="@equip?.NOB">
-                    <div class="place">@Html.Raw(i)</div>
-                    <div class="kob">@Html.Raw(equip?.KOB)</div>
-                    <div class="mob">@Html.Raw(equip?.MOB)</div>
-                </div>
+                if (equip!=null)
+                {
+                    <div class="equipmentplace" style="background: @c" data-tooltip="@equip?.NOB">
+                        <div class="place">@Html.Raw(i)</div>
+                        <div class="kob">@Html.Raw(equip?.KOB)</div>
+                        <div class="mob">@Html.Raw(equip?.MOB)</div>
+                    </div>
+                }
+                if (equip==null)
+                {
+                    <div class="equipmentplace" style="background: @c">
+                        <div class="place">@Html.Raw(i)</div>
+                        <div class="kob"></div>
+                        <div class="mob"></div>
+                    </div> 
+                }
+
             }
         }
     </div>

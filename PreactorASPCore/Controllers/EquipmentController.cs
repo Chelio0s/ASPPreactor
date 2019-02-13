@@ -22,7 +22,7 @@ namespace PreactorASPCore.Controllers
                 Color.Crimson.Name.ToLower(),
                 Color.GreenYellow.Name.ToLower(), Color.LightSteelBlue.Name.ToLower(), Color.Navy.Name.ToLower(), Color.PapayaWhip.Name.ToLower(),
                 Color.Gold.Name.ToLower(), Color.OliveDrab.Name.ToLower(),
-                Color.Maroon.Name.ToLower(), Color.LightGreen.Name.ToLower(), Color.Peru.Name.ToLower(), Color.DeepPink.Name.ToLower(), Color.MistyRose.Name.ToLower(),
+                Color.Orange.Name.ToLower(), Color.LightGreen.Name.ToLower(), Color.Peru.Name.ToLower(), Color.DeepPink.Name.ToLower(), Color.MistyRose.Name.ToLower(),
                 Color.DodgerBlue.Name.ToLower(), Color.MediumSlateBlue.Name.ToLower(), Color.SkyBlue.Name.ToLower(),
                 Color.Yellow.Name.ToLower(), Color.Transparent.Name.ToLower()
             };
