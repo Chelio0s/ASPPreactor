@@ -21,4 +21,10 @@
     <Folder Include="Pages\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\images\favicon.ico">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

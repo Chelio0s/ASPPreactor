@@ -93,3 +93,7 @@
     opacity: 1; /* Показываем подсказку */
     top: -80%; /* Положение подсказки */
 }
+
+.belwestTheme {
+    background: aquamarine;
+}

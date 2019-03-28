@@ -23,8 +23,6 @@
                 string c = "white";
                 var color = equip?.KOB % 20 ?? 20;
                 c = @ViewBag.Colors[color];
-
-
                 if (equip!=null)
                 {
                     <div class="equipmentplace" style="background: @c" data-tooltip="@equip?.NOB">
@@ -73,11 +71,9 @@
                         <div class="mob"></div>
                     </div> 
                 }
-
             }
         }
     </div>
-
 }
 
 

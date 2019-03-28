@@ -321,39 +321,37 @@ label {
   font-style: italic;
 }
 .slider-content > a {
-  
- background-color: #FF9010;
-color: #fff;
-display: inline-block;
-font-family: 'PT Sans', sans-serif;
-font-size: 14px;
-font-weight: 600;
-line-height: 28px;
- margin-top: 10px; 
-margin-bottom: 50px;
-padding: 15px 38px;
-position: relative;
-text-transform: capitalize;
-transform: perspective(1px) translateZ(0px);
-transition: color 0.3s ease 0s;
-vertical-align: middle;
+    background-color: #347354;
+    color: whitesmoke;
+    display: inline-block;
+    font-family: 'Artifakt Legend Medium', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 15px 38px;
+    position: relative;
+    transform: perspective(1px) translateZ(0px);
+    transition: color 0.3s ease 0s;
+    vertical-align: middle;
 }
 .slider-content > a:hover{color:#fff;}
-.slider-content>a::before {
-    background:  #333333 none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: scaleX(0);
-    transform-origin: 50% 0 0;
-    transition-duration: 0.3s;
-    transition-property: transform;
-    transition-timing-function: ease-out;
-    z-index: -1;
-}
+    .slider-content > a::before {
+        background: #113045 none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scaleX(0);
+        transform-origin: 60% 0 0;
+        transition-duration: 0.3s;
+        transition-property: transform;
+        transition-timing-function: ease-out;
+        z-index: -1;
+    }
 .slider-content>a:hover::before {
     transform: scaleY(1);
 }
