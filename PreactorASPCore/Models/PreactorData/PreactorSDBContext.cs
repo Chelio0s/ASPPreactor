@@ -61,7 +61,7 @@ namespace PreactorASPCore.Models.PreactorData
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=172.30.6.11;Database=PreactorSDB;User ID = MPU; password = 12345a;");
+                optionsBuilder.UseSqlServer("Server=172.30.6.11;Database=PreactorSDB;User ID = trofimov; password = 32306600;");
             }
         }
 
