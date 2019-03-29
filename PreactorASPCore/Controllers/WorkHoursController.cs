@@ -20,7 +20,7 @@ namespace PreactorASPCore.Controllers
             MSSqlRepository msSqlRepo = new MSSqlRepository();
             var dat = msSqlRepo.GetEntities<WorkHoursForOrgUnit>();
             ViewBag.koll = dat.Count();
-            return View(dat.ToList());
+            return View(dat.ToList().Take(10));
         }
     }
 }

@@ -9,9 +9,15 @@
 <p>
     <a> Колличестов элементов: @ViewBag.koll</a>
 </p>
-<table class="table">
+<table class="table" border="1">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrgUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrgTitle)
             </th>
@@ -22,17 +28,31 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.DateWorkDay)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ShiftId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.wdCrew)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartWork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndWork)
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrgTitle)
             </td>
@@ -43,15 +63,19 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DateWorkDay)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ShiftId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.wdCrew)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.StartWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndWork)
             </td>
         </tr>
 }
