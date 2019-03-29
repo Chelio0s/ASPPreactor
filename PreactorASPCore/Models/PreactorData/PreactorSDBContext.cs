@@ -54,7 +54,8 @@ namespace PreactorASPCore.Models.PreactorData
         public virtual DbSet<UseConstraintOperations> UseConstraintOperations { get; set; }
         public virtual DbSet<UseConstraintResources> UseConstraintResources { get; set; }
         public virtual DbSet<WorkDays> WorkDays { get; set; }
-
+        public virtual DbSet<WorkHoursForOrgUnit> WorkHoursForOrgUnit { get; set; }
+    
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -66,6 +67,11 @@ namespace PreactorASPCore.Models.PreactorData
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<WorkHoursForOrgUnit>(entity =>
+            {
+                entity.HasKey(x => new { id = x.DateWorkDay, x.StartWork, x.OrgUnit, x.EndWork, x.AreaId }).HasName("PK_FAKEKEY");
+            });
+
             modelBuilder.Entity<AltOperationRule>(entity =>
             {
                 entity.HasKey(e => e.IdRule);

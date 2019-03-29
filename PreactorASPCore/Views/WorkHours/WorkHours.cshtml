@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PreactorASPCore.Models.PreactorData.WorkHoursForOrgUnit>
+
+@{
+    ViewData["Title"] = "WorkHours";
+}
+
+<h2>WorkHours</h2>
+
+<p>
+    <a> Колличестов элементов: @ViewBag.koll</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrgTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShiftId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wdCrew)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShiftId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wdCrew)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

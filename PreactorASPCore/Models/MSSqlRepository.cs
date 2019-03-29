@@ -33,7 +33,7 @@ namespace PreactorASPCore.Models
         /// </summary>
         /// <typeparam name="T">Тип сущности</typeparam>
         /// <returns></returns>
-        public static List<T> GetEntities<T>() where T : class
+        public List<T> GetEntities<T>() where T : class
         {
             using (var context = new PreactorSDBContext())
             {
