@@ -16,7 +16,7 @@ namespace PreactorASPCore.Models
         /// <typeparam name="T"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        internal static List<T> GetEntities<T>(Func<T, bool> predicate) where T : class
+        internal List<T> GetEntities<T>(Func<T, bool> predicate) where T : class
         {
             using (var context = new PreactorSDBContext())
             {
@@ -40,6 +40,7 @@ namespace PreactorASPCore.Models
                 var query = context.Set<T>();
                 switch (typeof(T).Name)
                 {
+                    case "WorkHoursForOrgUnit": return context.Set<T>().AsNoTracking().ToList();
                     default: return context.Set<T>().ToList();
                 }
             }

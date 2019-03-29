@@ -10,17 +10,35 @@ namespace PreactorASPCore.Controllers
 {
     public class WorkHoursController : Controller
     {
+        DateTime date = new DateTime();
+        MSSqlRepository msSqlRepo = new MSSqlRepository();
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult WorkHours()
+        [HttpPost]
+        public IActionResult Index(string date)
         {
-            MSSqlRepository msSqlRepo = new MSSqlRepository();
-            var dat = msSqlRepo.GetEntities<WorkHoursForOrgUnit>();
-            ViewBag.koll = dat.Count();
-            return View(dat.ToList().Take(10));
+            if (date == null)
+                return View();
+            if(date != null)
+            {
+                this.date = DateTime.ParseExact(date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+                var data = msSqlRepo.GetEntities<WorkHoursForOrgUnit>(x => x.DateWorkDay == this.date);
+                ViewBag.koll = data.Count();
+                return View(data.ToList());
+            }                
+
+            return View();
         }
+
+        //public IActionResult WorkHours()
+        //{            
+        //    var dat = msSqlRepo.GetEntities<WorkHoursForOrgUnit>();
+        //    ViewBag.koll = dat.Count();
+        //    return View(dat.ToList().Take(10));
+        //}
     }
 }
