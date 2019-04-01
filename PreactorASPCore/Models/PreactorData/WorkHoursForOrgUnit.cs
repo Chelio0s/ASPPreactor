@@ -32,4 +32,42 @@ namespace PreactorASPCore.Models.PreactorData
         [DataType(DataType.Time)]
         public DateTime EndWork { get; set; }
     }
+
+    public class InfoWH
+    {
+        /// <summary>
+        /// Код
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Расшифровка кода
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Смена
+        /// </summary>
+        public int Shift { get; set; }
+
+        /// <summary>
+        /// время перерыва с-по на первой смене
+        /// </summary>
+        public string S1FT { get; set; }
+
+        /// <summary>
+        /// основной пирив на первой смене
+        /// </summary>
+        public string S1break { get; set; }
+
+        /// <summary>
+        /// время перерыва с-по на второй смене
+        /// </summary>
+        public string S2FT { get; set; }
+
+        /// <summary>
+        /// основной пирив на второй смене
+        /// </summary>
+        public string S2break { get; set; }
+    }
 }

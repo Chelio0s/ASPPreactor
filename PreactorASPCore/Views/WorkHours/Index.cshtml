@@ -1,10 +1,10 @@
-﻿@model IEnumerable<PreactorASPCore.Models.PreactorData.WorkHoursForOrgUnit>
+﻿@model IEnumerable<PreactorASPCore.Models.PreactorData.InfoWH>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Халло</h2>
 <a>Дата в формате дд.мм.гггг</a>
 <a>@ViewBag.date</a>
 @using (Html.BeginForm())
@@ -13,83 +13,45 @@
     <input type="submit" />
 }
 
-    <p>
-        <a> Колличестов элементов: @ViewBag.koll</a>
-    </p>
+<p>
+    <a> Колличестов элементов: @ViewBag.koll</a>
+</p>
 
-@if(ViewBag.koll != null)
+@if (ViewBag.koll != null)
 {
-    <table class="table" border="1">
+<table class="table" border="1">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrgUnit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AreaId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrgTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateWorkDay)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShiftId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.wdCrew)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartWork)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndWork)
-            </th>
+           <th></th>
+           <th></th>
+           <th colspan="2">Смена 1</th>
+           <th colspan="2">Смена 2</th>
         </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                    <th>С-по</th>
+                    <th>Основоной перерыв</th>
+                    <th>C-по</th>
+                    <th>Основоной перерыв</th>
+            </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrgUnit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AreaId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrgTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateWorkDay)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShiftId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.wdCrew)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartWork)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndWork)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.S1FT)</td>
+            <td>@Html.DisplayFor(modelItem => item.S1break)</td>
+            <td>@Html.DisplayFor(modelItem => item.S2FT)</td>
+            <td>@Html.DisplayFor(modelItem => item.S2break)</td>
+        </tr>
         }
     </tbody>
-    </table>
+</table>
 }
