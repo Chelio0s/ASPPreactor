@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PreactorASPCore.Models.PreactorData.WorkshopWorker>
+@{
+    ViewData["Title"] = "Workers";
+}
+
+<h2>Workers</h2>
+
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Цех</th>
+            <th>Колличество людей</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.workshop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountOfWorkers)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

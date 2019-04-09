@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PreactorASPCore.Models;
 using PreactorASPCore.Models.PreactorData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PreactorASPCore.Controllers
 {
@@ -29,68 +27,8 @@ namespace PreactorASPCore.Controllers
                 this.date = DateTime.ParseExact(date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
                 var data = msSqlRepo.GetEntities<WorkHoursForOrgUnit>(x => x.DateWorkDay == this.date)
                     .GroupBy(x => x.code);
-                int k = data.Count();
-                ViewBag.koll = data.Count();
-
-                //Цикл мальчика 
-                //                  |
-                //                  |
-                //                  |
-                //                  |
-                //                  V
-
-                //for (int i = 0; i < k; i++)
-                //{
-                //    if (info.Count() != 0)
-                //    {
-                //        for (int j = 0; j < info.Count(); j++)
-                //        {
-                //            if (info[j].Code == data[i].code && info[j].Shift != data[i].ShiftId)
-                //            {
-                //                if (info[j].S1FT != null)
-                //                {
-                //                    info[j].S2FT = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //                }
-                //                else
-                //                {
-                //                    info[j].S1FT = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //                }
-                //            }
-                //        }
-                //    }
-                //    else
-                //    {
-                //        string S1 = null;
-                //        string S2 = null;
-                //        if (data[i].ShiftId == 1)
-                //        {
-                //            S1 = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //        }
-                //        else
-                //        {
-                //            S2 = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //        }
-                //        info.Add(new InfoWH
-                //        {
-                //            Code = data[i].code,
-                //            Title = data[i].Title,
-                //            Shift = data[i].ShiftId,
-                //            S1FT = S1,
-                //            S2FT = S2
-                //        });
-                //    }
-                //}
-
-
 
                 var info = new List<InfoWH>();
-
-                //Цикл мужчины 
-                //                  |
-                //                  |
-                //                  |
-                //                  |
-                //                  V
 
                 foreach (var groups in data)
                 {
@@ -98,15 +36,13 @@ namespace PreactorASPCore.Controllers
                     var shift2 = groups.Where(x => x.ShiftId == 2).ToList();
 
                     var data1 = Formatdata(shift1, shift2);
-                    if (data1!=null)
+                    if (data1 != null)
                     {
                         info.Add(data1);
                     }
                 }
-
                 return View(info.ToList());
             }
-
             return View();
         }
 
@@ -145,5 +81,21 @@ namespace PreactorASPCore.Controllers
             }
             return null;
         }
+
+        public IActionResult Workers()
+        {
+            PreactorSDBContext context = new PreactorSDBContext();
+            var q = context.Employees
+              .Select(x => x.OrgunitNavigation.Area.Title)
+              .GroupBy(x => x)
+              .Select(x => new { x, count = x.Count() });
+            var W = new List<WorkshopWorker>();
+            foreach (var i in q)
+            {
+                W.Add(new WorkshopWorker{workshop = i.x.Key, AmountOfWorkers = i.count });
+            }
+            return View(W.ToList());
+        }
+
     }
 }
