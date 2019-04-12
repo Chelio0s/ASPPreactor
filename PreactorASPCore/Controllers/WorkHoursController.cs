@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+>>>>>>> c150891ccffd0a7267a459dde34c2c1813292a4b
 using PreactorASPCore.Models;
 using PreactorASPCore.Models.PreactorData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PreactorASPCore.Controllers
 {
@@ -27,25 +34,29 @@ namespace PreactorASPCore.Controllers
                 this.date = DateTime.ParseExact(date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
                 var data = msSqlRepo.GetEntities<WorkHoursForOrgUnit>(x => x.DateWorkDay == this.date)
                     .GroupBy(x => x.code);
+<<<<<<< HEAD
                 int k = data.Count();
                 ViewBag.koll = data.Count();
 
                 var info = new List<InfoWH>();
+=======
+
+                var info = new List<InfoWH>();
+
+>>>>>>> c150891ccffd0a7267a459dde34c2c1813292a4b
                 foreach (var groups in data)
                 {
                     var shift1 = groups.Where(x => x.ShiftId == 1).ToList();
                     var shift2 = groups.Where(x => x.ShiftId == 2).ToList();
 
                     var data1 = Formatdata(shift1, shift2);
-                    if (data1!=null)
+                    if (data1 != null)
                     {
                         info.Add(data1);
                     }
                 }
-
                 return View(info.ToList());
             }
-
             return View();
         }
 
@@ -81,5 +92,21 @@ namespace PreactorASPCore.Controllers
             }
             return null;
         }
+
+        public IActionResult Workers()
+        {
+            PreactorSDBContext context = new PreactorSDBContext();
+            var q = context.Employees
+              .Select(x => x.OrgunitNavigation.Area.Title)
+              .GroupBy(x => x)
+              .Select(x => new { x, count = x.Count() });
+            var W = new List<WorkshopWorker>();
+            foreach (var i in q)
+            {
+                W.Add(new WorkshopWorker{workshop = i.x.Key, AmountOfWorkers = i.count });
+            }
+            return View(W.ToList());
+        }
+
     }
 }
