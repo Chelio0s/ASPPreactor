@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PreactorASPCore.Models;
 using PreactorASPCore.Models.PreactorData;
@@ -32,66 +30,7 @@ namespace PreactorASPCore.Controllers
                 int k = data.Count();
                 ViewBag.koll = data.Count();
 
-                //Цикл мальчика 
-                //                  |
-                //                  |
-                //                  |
-                //                  |
-                //                  V
-
-                //for (int i = 0; i < k; i++)
-                //{
-                //    if (info.Count() != 0)
-                //    {
-                //        for (int j = 0; j < info.Count(); j++)
-                //        {
-                //            if (info[j].Code == data[i].code && info[j].Shift != data[i].ShiftId)
-                //            {
-                //                if (info[j].S1FT != null)
-                //                {
-                //                    info[j].S2FT = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //                }
-                //                else
-                //                {
-                //                    info[j].S1FT = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //                }
-                //            }
-                //        }
-                //    }
-                //    else
-                //    {
-                //        string S1 = null;
-                //        string S2 = null;
-                //        if (data[i].ShiftId == 1)
-                //        {
-                //            S1 = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //        }
-                //        else
-                //        {
-                //            S2 = data[i].StartWork.ToString("HH:mm") + "-" + data[i].EndWork.ToString("HH:mm");
-                //        }
-                //        info.Add(new InfoWH
-                //        {
-                //            Code = data[i].code,
-                //            Title = data[i].Title,
-                //            Shift = data[i].ShiftId,
-                //            S1FT = S1,
-                //            S2FT = S2
-                //        });
-                //    }
-                //}
-
-
-
                 var info = new List<InfoWH>();
-
-                //Цикл мужчины 
-                //                  |
-                //                  |
-                //                  |
-                //                  |
-                //                  V
-
                 foreach (var groups in data)
                 {
                     var shift1 = groups.Where(x => x.ShiftId == 1).ToList();
@@ -126,8 +65,6 @@ namespace PreactorASPCore.Controllers
                     S1break = shiftData1.OrderBy(x => x.StartWork).FirstOrDefault()?.EndWork.ToShortTimeString() +
                               "-" +
                               shiftData1.OrderBy(x => x.StartWork).Last()?.StartWork.ToShortTimeString()
-
-
                 };
                 if (shiftData2.Count > 0)
                 {
@@ -140,7 +77,6 @@ namespace PreactorASPCore.Controllers
                         "-" +
                         shiftData2.OrderBy(x => x.StartWork).Last()?.StartWork.ToShortTimeString();
                 }
-
                 return _infoWH;
             }
             return null;
