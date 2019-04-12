@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-=======
 ﻿using Microsoft.AspNetCore.Mvc;
->>>>>>> c150891ccffd0a7267a459dde34c2c1813292a4b
 using PreactorASPCore.Models;
 using PreactorASPCore.Models.PreactorData;
 using System;
@@ -34,16 +27,11 @@ namespace PreactorASPCore.Controllers
                 this.date = DateTime.ParseExact(date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
                 var data = msSqlRepo.GetEntities<WorkHoursForOrgUnit>(x => x.DateWorkDay == this.date)
                     .GroupBy(x => x.code);
-<<<<<<< HEAD
+
                 int k = data.Count();
                 ViewBag.koll = data.Count();
 
                 var info = new List<InfoWH>();
-=======
-
-                var info = new List<InfoWH>();
-
->>>>>>> c150891ccffd0a7267a459dde34c2c1813292a4b
                 foreach (var groups in data)
                 {
                     var shift1 = groups.Where(x => x.ShiftId == 1).ToList();
