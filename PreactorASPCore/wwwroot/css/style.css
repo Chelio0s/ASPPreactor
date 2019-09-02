@@ -965,3 +965,9 @@ footer{
  .post-navigation .nav-links .nav-title h2 a.portfoli{
   color:#000;
  }
+
+.wow {
+    background: #fc0; /* Цвет фона */
+    box-shadow: 0 0 10px rgba(0,0,0,1); /* Параметры тени */
+    padding: 10px;
+}

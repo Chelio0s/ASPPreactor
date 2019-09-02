@@ -36,6 +36,7 @@ namespace PreactorASPCore.Controllers
             
             return View(queryRes.Where(x => x.KCEH == "OP02" && x.KPLOT.StartsWith("20")).OrderBy(x => x.WP).ToList());
         }
+
     }
 
     
